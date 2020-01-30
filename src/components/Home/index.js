@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { ifIphoneX } from 'react-native-iphone-x-helper';
-import { Dimensions, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+import { Platform, Dimensions, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import * as homeActions from '../../redux/actions/home'
 import {
@@ -105,7 +105,7 @@ class Home extends Component {
                                     <Text style={[styles.fontDefault, {
                                         color: '#fff',
                                         padding: 20,
-                                        paddingLeft: '40%',
+                                        paddingLeft: '55%',
                                         fontWeight: 'bold'
                                     }]}>Nome</Text>
                                 </Col>
@@ -140,8 +140,11 @@ class Home extends Component {
                         </TouchableOpacity>
                     )}
                 </Content>
-                <Footer style={{ backgroundColor: WHITE, marginBottom: 24 }}>
-                    <FooterTab>
+                <Footer style={{ backgroundColor: WHITE }}>
+                    <FooterTab style={{
+                        backgroundColor: WHITE, justifyContent: 'center',
+                        alignItems: 'center', flex: 1
+                    }} >
                         <Button disabled={offset === 0} transparent transparent onPress={() => this.filterForwardBack(-4)}>
                             <Icon type={'FontAwesome'} name="chevron-left" size={100} style={{ color: offset === 0 ? 'gray' : COLOR_PRIMARY }} />
                         </Button>
@@ -150,8 +153,9 @@ class Home extends Component {
                                 <TouchableOpacity
                                     key={index}
                                     style={{
-                                        height: '50%',
+                                        height: Platform.OS === 'ios' ? '50%' : '70%',
                                         paddingBottom: 5,
+                                        paddingTop: Platform.OS === 'ios' ? 0 : 5,
                                         paddingLeft: 15,
                                         paddingRight: 15,
                                         borderColor: COLOR_PRIMARY,
@@ -164,8 +168,11 @@ class Home extends Component {
                                     activeOpacity={0.8}
                                 >
                                     <Text style={{
-                                        color: offset === item ? WHITE : COLOR_PRIMARY, fontSize: 22,
-                                        borderColor: COLOR_PRIMARY, marginTop: 10
+                                        color: offset === item ? WHITE : COLOR_PRIMARY,
+                                        fontSize: 22,
+                                        borderColor: COLOR_PRIMARY,
+                                        marginTop: Platform.OS === 'ios' ? 10 : 0,
+                                        marginBottom: Platform.OS === 'ios' ? 0 : 5
                                     }}>{(item / 4) + 1}</Text>
                                 </TouchableOpacity>
                             )
