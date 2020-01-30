@@ -53,8 +53,8 @@ class Home extends Component {
 
     handleSearch = (name) => {
         this.props.navOffSetAction(0)
+        this.setState({ nameCharacter: name })
         if (name && name.length > 2) {
-            this.setState({ nameCharacter: name })
             this.props.setOffSetAction(0)
             this.props.listCharacterAction(name)
 
