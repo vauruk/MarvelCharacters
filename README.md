@@ -6,7 +6,6 @@ Here's your personal Marvel Comics API information:
 Your public key
 3501e3f005cd22950df0827a0f5a1245
 Your private key
-xxxx 8105d5e6fc9822213e5b786460d9419e5fa2fdcf
 Read more about how to use your keys to sign requests.
 
 Your rate limit:
