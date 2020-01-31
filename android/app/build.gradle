@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.marvelobjective"
+        applicationId "com.marvelcharacters"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

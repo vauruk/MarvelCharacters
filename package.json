@@ -1,5 +1,5 @@
 {
-  "name": "MarvelObjective",
+  "name": "MarvelCharacters",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "crypto-js": "^3.1.9-1",
     "history": "^4.9.0",
     "lodash": "^4.17.15",
@@ -25,8 +24,8 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
-    "@babel/runtime": "^7.8.3",
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^0.0.7",
     "babel-jest": "^25.1.0",
     "eslint": "^6.8.0",
