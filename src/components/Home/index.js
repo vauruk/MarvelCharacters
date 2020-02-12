@@ -11,12 +11,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import {
-    Platform,
-    Modal,
     Dimensions,
     View,
     StyleSheet,
-    ScrollView,
     TouchableOpacity
 } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
@@ -27,12 +24,10 @@ import {
     Content,
     Input,
     Spinner,
-    Footer,
-    FooterTab,
-    Button,
-    Icon,
     Thumbnail
 } from 'native-base'
+
+import FooterApp from './footer'
 
 import _ from 'lodash'
 
@@ -56,11 +51,7 @@ class Home extends Component {
         this.props.listCharacterAction()
     }
 
-    componentDidUpdate = (prevProps) => {
-        if (!_.isEqual(this.props.offset, prevProps.offset) && this.props.offset >= 0) {
-            this.props.listCharacterAction(this.state.nameCharacter)
-        }
-    }
+
 
 
     handleSearch = (name) => {
@@ -72,23 +63,15 @@ class Home extends Component {
         }
     }
 
-    /**
-     * Responsavel para avancar e voltar na pesquisa
-     */
-    filterForwardBack = (number) => {
-        this.props.setOffSetAction(number)
-    }
-
     showModalDetail = (item) => {
         console.log("Click me", item)
         this.setState({ showModal: !this.state.showModal, item })
     }
 
     render() {
-        const { listCharacter, loading, offset, footerNav } = this.props
+        const { listCharacter, loading } = this.props
         return (
             <Container>
-
                 <Content>
                     <Detail showModal={this.state.showModal} item={this.state.item} showModalDetail={() => this.showModalDetail()} />
                     <View style={{
@@ -138,68 +121,10 @@ class Home extends Component {
                         </Grid>
                     </View>
                     {listCharacter.map((item, index) =>
-                        <TouchableOpacity
-                            key={index}
-                            style={{ borderBottomColor: PRIMARY_COLOR, borderBottomWidth: 1 }}
-                            onPress={() => this.showModalDetail(item)}
-                        >
-                            <Grid>
-                                <Row style={{ margin: 30 }}>
-                                    <Col style={{ width: '25%' }}>
-                                        <Thumbnail source={{ uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }} />
-                                    </Col>
-                                    <Col style={{
-                                        justifyContent: 'center',
-                                    }}>
-                                        <Text>{item.name}</Text>
-                                    </Col>
-                                </Row>
-                            </Grid>
-                        </TouchableOpacity>
+                        <ItemChar key={index} item={item} showModalDetail={this.showModalDetail} />
                     )}
                 </Content>
-                <Footer style={{ backgroundColor: WHITE }}>
-                    <FooterTab style={{
-                        backgroundColor: WHITE, justifyContent: 'center',
-                        alignItems: 'center', flex: 1
-                    }} >
-                        <Button disabled={offset === 0} transparent transparent onPress={() => this.filterForwardBack(-4)}>
-                            <Icon type={'FontAwesome'} name="chevron-left" size={100} style={{ color: offset === 0 ? 'gray' : PRIMARY_COLOR }} />
-                        </Button>
-                        {
-                            footerNav && footerNav.map((item, index) =>
-                                <TouchableOpacity
-                                    key={index}
-                                    style={{
-                                        height: Platform.OS === 'ios' ? '50%' : '70%',
-                                        paddingBottom: 5,
-                                        paddingTop: Platform.OS === 'ios' ? 0 : 5,
-                                        paddingLeft: 15,
-                                        paddingRight: 15,
-                                        borderColor: PRIMARY_COLOR,
-                                        borderWidth: 1,
-                                        margin: 21,
-                                        backgroundColor: offset === item ? PRIMARY_COLOR : WHITE,
-                                        borderRadius: 50
-                                    }}
-                                    onPress={() => this.props.navOffSetAction(item)}
-                                    activeOpacity={0.8}
-                                >
-                                    <Text style={{
-                                        color: offset === item ? WHITE : PRIMARY_COLOR,
-                                        fontSize: 22,
-                                        borderColor: PRIMARY_COLOR,
-                                        marginTop: Platform.OS === 'ios' ? 10 : 0,
-                                        marginBottom: Platform.OS === 'ios' ? 0 : 5
-                                    }}>{(item / 4) + 1}</Text>
-                                </TouchableOpacity>
-                            )
-                        }
-                        <Button disabled={listCharacter.length <= 0} transparent onPress={() => this.filterForwardBack(4)} >
-                            <Icon type={'FontAwesome'} name="chevron-right" size={100} style={{ color: listCharacter.length <= 0 ? 'gray' : PRIMARY_COLOR }} />
-                        </Button>
-                    </FooterTab>
-                </Footer>
+                <FooterApp nameCharacter={this.state.nameCharacter} />
             </Container >
         );
     }
@@ -208,14 +133,33 @@ class Home extends Component {
 const mapStateToProps = (state) => ({
     listCharacter: state.home.listCharacter,
     loading: state.home.loading,
-    footerNav: state.home.footerNav,
-    offset: state.home.offset,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(homeActions, dispatch)
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+const ItemChar = ({ item, showModalDetail }) => {
+    return <TouchableOpacity
+        style={{ borderBottomColor: PRIMARY_COLOR, borderBottomWidth: 1 }
+        }
+        onPress={() => showModalDetail(item)}
+    >
+        <Grid>
+            <Row style={{ margin: 30 }}>
+                <Col style={{ width: '25%' }}>
+                    <Thumbnail source={{ uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }} />
+                </Col>
+                <Col style={{
+                    justifyContent: 'center',
+                }}>
+                    <Text>{item.name}</Text>
+                </Col>
+            </Row>
+        </Grid>
+    </TouchableOpacity>
+}
 
 const styles = StyleSheet.create({
     container: {

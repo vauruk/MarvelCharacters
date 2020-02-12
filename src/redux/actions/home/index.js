@@ -77,10 +77,7 @@ export const setOffSetAction = (num) => {
             arrNew.push(offsetNew + 4)
             dispatch({ type: types.SET_ARR_FOOTERNAV, payload: arrNew })
         } else if(num === 0) {
-            arrNew.push(0)
-            arrNew.push(4)
-            arrNew.push(8)
-            dispatch({ type: types.SET_ARR_FOOTERNAV, payload: arrNew })
+            dispatch({ type: types.CLEAN_STATE, payload: arrNew })
         }
         dispatch({ type: types.SET_OFFSET, payload: offsetNew })
     }
