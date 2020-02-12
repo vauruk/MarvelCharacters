@@ -66,12 +66,12 @@ class Home extends Component {
     handleSearch = (name) => {
         this.props.navOffSetAction(0)
         this.setState({ nameCharacter: name })
-        if (name && name.length > 2 || name.length == 0) {
+       // if (name && name.length > 2) {
             this.props.setOffSetAction(0)
             this.props.listCharacterAction(name)
-        }
-    }
 
+        //}
+    }
     /**
      * Responsavel para avancar e voltar na pesquisa
      */
@@ -90,7 +90,7 @@ class Home extends Component {
             <Container>
 
                 <Content>
-                    <Detail showModal={this.state.showModal} item={this.state.item} showModalDetail={() => this.showModalDetail()} />
+                    <Detail showModal={this.state.showModal} item={this.state.item} showModalDetail={()=>this.showModalDetail()} />
                     <View style={{
                         justifyContent: 'center',
                         alignItems: 'center',
