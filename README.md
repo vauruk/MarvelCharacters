@@ -1,4 +1,4 @@
-Arquiteto de Soluções Mobile 
+Arquiteto de Soluções Mobile -- 
 Vanderson Vauruk
 -------------------------------------
 
