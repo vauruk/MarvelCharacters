@@ -1,3 +1,7 @@
+Arquiteto de Soluções Mobile 
+Vanderson Vauruk
+-------------------------------------
+
 MY DEVELOPER ACCOUNT
 Hi vauruk1138270710!
 
