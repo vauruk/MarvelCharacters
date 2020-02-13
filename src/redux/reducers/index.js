@@ -1,3 +1,7 @@
+/**
+ * @autor Vanderson de Moura Vauruk
+ */
+
 import { combineReducers } from 'redux';
 //import { connectRouter } from 'connected-react-router'
 

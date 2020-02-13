@@ -1,3 +1,7 @@
+/**
+ * @autor Vanderson de Moura Vauruk
+ */
+
 import * as types from './types';
 import _ from 'lodash'
 import md5 from 'crypto-js/md5';

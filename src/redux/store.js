@@ -1,3 +1,7 @@
+/**
+ * @autor Vanderson de Moura Vauruk
+ */
+
 
 import { createStore, applyMiddleware, compose } from 'redux'
 //import { routerMiddleware } from 'connected-react-router'

@@ -1,9 +1,5 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
+ * @autor Vanderson de Moura Vauruk
  */
 
 import React, { Component } from 'react';

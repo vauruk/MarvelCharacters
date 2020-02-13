@@ -1,5 +1,8 @@
-import * as types from '../../actions/home/types';
+/**
+ * @autor Vanderson de Moura Vauruk
+ */
 
+import * as types from '../../actions/home/types';
 
 const footerNavDefault = [0, 4, 8]
 

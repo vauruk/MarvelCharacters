@@ -2,6 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
+ * @autor Vanderson de Moura Vauruk
  */
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';

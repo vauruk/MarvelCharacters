@@ -1,3 +1,7 @@
+/**
+ * @autor Vanderson de Moura Vauruk
+ */
+
 export const LIST_CHARACTERS = 'home/LIST_CHARACTERS'
 export const COUNTER_CHARACTERS = 'home/COUNTER_CHARACTERS'
 export const LOADING = 'home/LOADING'
